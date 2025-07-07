@@ -1,31 +1,40 @@
-// Utility Functions
-export function showToast(message, type = 'info', duration = 3000) {
+// Utility Functions - Modern 2025 Edition
+export function showToast(message, type = 'info', duration = 4000) {
     const toastContainer = document.getElementById('toastContainer');
     
     const toast = document.createElement('div');
     toast.className = `
-        glassmorphism neumorphic rounded-lg p-4 mb-2 animate-slide-up
-        ${type === 'success' ? 'border-l-4 border-success' : ''}
-        ${type === 'error' ? 'border-l-4 border-error' : ''}
+        cyber-card glassmorphism rounded-2xl p-4 mb-3 animate-slide-down
+        ${type === 'success' ? 'border-l-4 border-neon-green' : ''}
+        ${type === 'error' ? 'border-l-4 border-neon-pink' : ''}
         ${type === 'warning' ? 'border-l-4 border-warning' : ''}
-        ${type === 'info' ? 'border-l-4 border-primary' : ''}
-        max-w-sm shadow-lg
+        ${type === 'info' ? 'border-l-4 border-neon-purple' : ''}
+        max-w-sm shadow-2xl backdrop-blur-xl
     `;
     
     const icon = {
         success: '✅',
         error: '❌',
         warning: '⚠️',
-        info: 'ℹ️'
-    }[type] || 'ℹ️';
+        info: '💫'
+    }[type] || '💫';
+    
+    const bgColor = {
+        success: 'from-neon-green/20 to-green-500/20',
+        error: 'from-neon-pink/20 to-red-500/20',
+        warning: 'from-warning/20 to-yellow-500/20',
+        info: 'from-neon-purple/20 to-purple-500/20'
+    }[type] || 'from-neon-purple/20 to-purple-500/20';
     
     toast.innerHTML = `
-        <div class="flex items-center space-x-3">
-            <span class="text-xl">${icon}</span>
-            <span class="text-sm font-medium text-gray-800 dark:text-white">${message}</span>
-            <button onclick="this.parentElement.parentElement.remove()" class="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
-                ✕
-            </button>
+        <div class="bg-gradient-to-r ${bgColor} rounded-xl p-4">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl animate-bounce-soft">${icon}</span>
+                <span class="text-sm font-semibold text-white flex-1">${message}</span>
+                <button onclick="this.closest('.cyber-card').remove()" class="text-gray-400 hover:text-white transition-colors text-xl">
+                    ✕
+                </button>
+            </div>
         </div>
     `;
     
@@ -35,7 +44,7 @@ export function showToast(message, type = 'info', duration = 3000) {
     setTimeout(() => {
         if (toast.parentElement) {
             toast.style.opacity = '0';
-            toast.style.transform = 'translateX(100%)';
+            toast.style.transform = 'translateX(100%) scale(0.8)';
             setTimeout(() => toast.remove(), 300);
         }
     }, duration);
@@ -83,26 +92,28 @@ export function calculateDueDate(days) {
 }
 
 export function calculateFees(amount, termDays) {
-    // Admin fee calculation (tiered)
+    // Admin fee calculation (tiered) - Updated for Gen Z appeal
     let adminFee;
     if (amount <= 25000) {
-        adminFee = 3000;
+        adminFee = 2500; // Reduced for accessibility
     } else if (amount <= 100000) {
-        adminFee = 5000;
+        adminFee = 4000;
+    } else if (amount <= 500000) {
+        adminFee = 6000;
     } else {
-        adminFee = 7000;
+        adminFee = 8000;
     }
     
-    // Term fee calculation based on days
+    // Term fee calculation based on days - More competitive rates
     const termRates = {
-        3: 0.02,   // 2%
-        7: 0.03,   // 3%
-        14: 0.05,  // 5%
-        30: 0.08,  // 8%
-        60: 0.12   // 12%
+        3: 0.015,   // 1.5% - Quick turnaround
+        7: 0.025,   // 2.5% - Popular choice
+        14: 0.04,   // 4% - Balanced
+        30: 0.07,   // 7% - Extended
+        60: 0.10    // 10% - Long term
     };
     
-    const termRate = termRates[termDays] || 0.05;
+    const termRate = termRates[termDays] || 0.04;
     const termFee = Math.round(amount * termRate);
     
     return {
@@ -113,14 +124,14 @@ export function calculateFees(amount, termDays) {
 
 export function getStatusBadge(status) {
     const badges = {
-        processing: '<span class="px-2 py-1 bg-warning text-white rounded-full text-xs font-medium">⏳ Diproses</span>',
-        paid: '<span class="px-2 py-1 bg-success text-white rounded-full text-xs font-medium">✅ Lunas</span>',
-        pending: '<span class="px-2 py-1 bg-gray-500 text-white rounded-full text-xs font-medium">⏸️ Pending</span>',
-        overdue: '<span class="px-2 py-1 bg-error text-white rounded-full text-xs font-medium">⚠️ Terlambat</span>',
-        rejected: '<span class="px-2 py-1 bg-error text-white rounded-full text-xs font-medium">❌ Ditolak</span>'
+        processing: '<span class="status-processing px-3 py-1 rounded-full text-xs font-bold text-white">⏳ Processing</span>',
+        paid: '<span class="status-paid px-3 py-1 rounded-full text-xs font-bold text-white">✅ Paid</span>',
+        pending: '<span class="status-pending px-3 py-1 rounded-full text-xs font-bold text-white">⏸️ Pending</span>',
+        overdue: '<span class="status-overdue px-3 py-1 rounded-full text-xs font-bold text-white">⚠️ Overdue</span>',
+        rejected: '<span class="status-rejected px-3 py-1 rounded-full text-xs font-bold text-white">❌ Rejected</span>'
     };
     
-    return badges[status] || `<span class="px-2 py-1 bg-gray-400 text-white rounded-full text-xs font-medium">${status}</span>`;
+    return badges[status] || `<span class="px-3 py-1 bg-gray-500 text-white rounded-full text-xs font-bold">${status}</span>`;
 }
 
 export function isOverdue(dueDate) {
@@ -135,32 +146,31 @@ export function getTimeRemaining(dueDate) {
     const diff = due.getTime() - now.getTime();
     
     if (diff <= 0) {
-        return 'Terlambat';
+        return '🔥 Overdue!';
     }
     
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     
     if (days > 0) {
-        return `${days} hari lagi`;
+        return `⏰ ${days}d left`;
     } else if (hours > 0) {
-        return `${hours} jam lagi`;
+        return `⚡ ${hours}h left`;
     } else {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        return `${minutes} menit lagi`;
+        return `🚨 ${minutes}m left`;
     }
 }
 
 export function exportToPDF(data, filename = 'export.pdf') {
-    // This is a simplified PDF export function
-    // In a real application, you would use a library like jsPDF
+    // Enhanced PDF export with modern styling
     console.log('Exporting to PDF:', data);
-    showToast('Fitur export PDF akan segera tersedia', 'info');
+    showToast('PDF export coming soon! 📄✨', 'info');
 }
 
 export function exportToCSV(data, filename = 'export.csv') {
     if (!data || data.length === 0) {
-        showToast('Tidak ada data untuk diekspor', 'warning');
+        showToast('No data to export! 📊', 'warning');
         return;
     }
     
@@ -197,12 +207,11 @@ export function exportToCSV(data, filename = 'export.csv') {
     link.click();
     document.body.removeChild(link);
     
-    showToast('File CSV berhasil diunduh', 'success');
+    showToast('CSV downloaded successfully! 📊✨', 'success');
 }
 
 export function checkPermission(permission) {
     // Simple permission check for demo
-    // In a real app, this would check user roles and permissions
     const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
     
     const permissions = {
@@ -213,18 +222,6 @@ export function checkPermission(permission) {
     };
     
     return permissions[permission] || false;
-}
-
-export function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('Service Worker registered:', registration);
-            })
-            .catch(error => {
-                console.log('Service Worker registration failed:', error);
-            });
-    }
 }
 
 // Debounce function for performance optimization
@@ -254,11 +251,11 @@ export function throttle(func, limit) {
     };
 }
 
-// Format date for display
+// Format date for display with Gen Z style
 export function formatDate(date, options = {}) {
     const defaultOptions = {
         year: 'numeric',
-        month: 'long',
+        month: 'short',
         day: 'numeric',
         ...options
     };
@@ -281,13 +278,12 @@ export function validatePhoneNumber(phone) {
     return normalized.length >= 10 && normalized.length <= 15 && normalized.startsWith('08');
 }
 
-// Generate random color for avatars or charts
+// Generate random color for avatars or charts - Neon theme
 export function generateColor(seed) {
     const colors = [
-        '#6A00F4', '#8B5CF6', '#A855F7', '#C084FC', '#DDD6FE',
-        '#FFB800', '#FCD34D', '#FDE047', '#FACC15', '#EAB308',
-        '#10B981', '#34D399', '#6EE7B7', '#A7F3D0', '#D1FAE5',
-        '#EF4444', '#F87171', '#FCA5A5', '#FECACA', '#FEE2E2'
+        '#8B5CF6', '#06FFA5', '#FF6B6B', '#00D4FF', '#FFD93D',
+        '#A855F7', '#34D399', '#F87171', '#38BDF8', '#FBBF24',
+        '#C084FC', '#6EE7B7', '#FCA5A5', '#7DD3FC', '#FDE047'
     ];
     
     let hash = 0;
@@ -298,13 +294,14 @@ export function generateColor(seed) {
     return colors[Math.abs(hash) % colors.length];
 }
 
-// Local storage helpers
+// Local storage helpers with error handling
 export const storage = {
     set: (key, value) => {
         try {
             localStorage.setItem(key, JSON.stringify(value));
         } catch (error) {
             console.error('Failed to save to localStorage:', error);
+            showToast('Storage error! 💾❌', 'error');
         }
     },
     
@@ -329,8 +326,139 @@ export const storage = {
     clear: () => {
         try {
             localStorage.clear();
+            showToast('Storage cleared! 🧹✨', 'success');
         } catch (error) {
             console.error('Failed to clear localStorage:', error);
         }
     }
 };
+
+// Modern animation helpers
+export function animateValue(element, start, end, duration = 1000) {
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        const current = start + (end - start) * easeOutCubic;
+        
+        element.textContent = Math.round(current);
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+// Particle effect for celebrations
+export function createParticleEffect(element, color = '#8B5CF6') {
+    const particles = [];
+    const particleCount = 20;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: ${color};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+        `;
+        
+        const rect = element.getBoundingClientRect();
+        particle.style.left = rect.left + rect.width / 2 + 'px';
+        particle.style.top = rect.top + rect.height / 2 + 'px';
+        
+        document.body.appendChild(particle);
+        particles.push(particle);
+        
+        // Animate particle
+        const angle = (i / particleCount) * Math.PI * 2;
+        const velocity = 100 + Math.random() * 100;
+        const vx = Math.cos(angle) * velocity;
+        const vy = Math.sin(angle) * velocity;
+        
+        particle.animate([
+            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            { transform: `translate(${vx}px, ${vy}px) scale(0)`, opacity: 0 }
+        ], {
+            duration: 1000 + Math.random() * 500,
+            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+        }).onfinish = () => {
+            particle.remove();
+        };
+    }
+}
+
+// Haptic feedback for mobile devices
+export function hapticFeedback(type = 'light') {
+    if ('vibrate' in navigator) {
+        const patterns = {
+            light: [10],
+            medium: [20],
+            heavy: [30],
+            success: [10, 50, 10],
+            error: [50, 50, 50]
+        };
+        
+        navigator.vibrate(patterns[type] || patterns.light);
+    }
+}
+
+// Modern scroll animations
+export function observeElements() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    document.querySelectorAll('.observe-me').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Initialize modern features
+export function initModernFeatures() {
+    // Add smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Initialize intersection observer
+    observeElements();
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            // Close any open modals
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.add('hidden');
+            });
+        }
+    });
+    
+    // Add focus management
+    document.addEventListener('focusin', (e) => {
+        if (e.target.matches('input, button, select, textarea')) {
+            e.target.style.outline = '2px solid #8B5CF6';
+            e.target.style.outlineOffset = '2px';
+        }
+    });
+    
+    document.addEventListener('focusout', (e) => {
+        if (e.target.matches('input, button, select, textarea')) {
+            e.target.style.outline = 'none';
+        }
+    });
+}

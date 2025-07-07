@@ -3,56 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Fund VIP - Enterprise Fund Management</title>
+    <title>Digital Fund VIP - Your Money, Your Vibe ✨</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#6A00F4',
-                        secondary: '#FFB800',
-                        success: '#10B981',
-                        warning: '#F59E0B',
-                        error: '#EF4444',
-                        'dark-bg': '#121212',
-                        'neon-blue': '#0EA5E9'
+                        primary: '#8B5CF6',
+                        secondary: '#06FFA5',
+                        accent: '#FF6B6B',
+                        warning: '#FFD93D',
+                        success: '#06FFA5',
+                        error: '#FF6B6B',
+                        'dark-bg': '#0A0A0F',
+                        'dark-card': '#1A1A2E',
+                        'neon-purple': '#8B5CF6',
+                        'neon-green': '#06FFA5',
+                        'neon-pink': '#FF6B6B',
+                        'neon-blue': '#00D4FF'
                     },
                     fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                        'poppins': ['Poppins', 'sans-serif']
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'shimmer': 'shimmer 2s linear infinite',
-                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-                        'count-up': 'countUp 0.8s ease-out'
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'slide-down': 'slideDown 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'gradient-shift': 'gradientShift 3s ease-in-out infinite',
+                        'text-glow': 'textGlow 2s ease-in-out infinite alternate',
+                        'card-hover': 'cardHover 0.3s ease-out',
+                        'neon-border': 'neonBorder 2s linear infinite'
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
                         },
                         slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
                         },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-200% 0' },
-                            '100%': { backgroundPosition: '200% 0' }
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
                         },
-                        pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 5px rgba(106, 0, 244, 0.5)' },
-                            '50%': { boxShadow: '0 0 20px rgba(106, 0, 244, 0.8)' }
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
                         },
-                        countUp: {
-                            '0%': { transform: 'scale(0.8)', opacity: '0' },
-                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glowPulse: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.6)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-10px) rotate(1deg)' },
+                            '66%': { transform: 'translateY(5px) rotate(-1deg)' }
+                        },
+                        gradientShift: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' }
+                        },
+                        textGlow: {
+                            '0%': { textShadow: '0 0 10px rgba(139, 92, 246, 0.5)' },
+                            '100%': { textShadow: '0 0 20px rgba(139, 92, 246, 0.8)' }
+                        },
+                        cardHover: {
+                            '0%': { transform: 'translateY(0) scale(1)' },
+                            '100%': { transform: 'translateY(-8px) scale(1.02)' }
+                        },
+                        neonBorder: {
+                            '0%': { borderColor: '#8B5CF6' },
+                            '25%': { borderColor: '#06FFA5' },
+                            '50%': { borderColor: '#FF6B6B' },
+                            '75%': { borderColor: '#00D4FF' },
+                            '100%': { borderColor: '#8B5CF6' }
                         }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                        'cyber-grid': 'linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)',
+                        'neon-gradient': 'linear-gradient(45deg, #8B5CF6, #06FFA5, #FF6B6B, #00D4FF)'
+                    },
+                    backgroundSize: {
+                        'cyber-grid': '20px 20px',
+                        'neon-gradient': '400% 400%'
                     }
                 }
             }
@@ -60,77 +110,259 @@
     </script>
     <style>
         .glassmorphism {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .dark .glassmorphism {
-            background: rgba(18, 18, 18, 0.8);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .neumorphic {
-            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.8);
+        .dark .glassmorphism {
+            background: rgba(26, 26, 46, 0.7);
+            border: 1px solid rgba(139, 92, 246, 0.2);
         }
         
-        .dark .neumorphic {
-            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.05);
+        .cyber-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 255, 165, 0.1));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
         }
         
-        .shimmer-bg {
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            background: linear-gradient(45deg, #8B5CF6, #06FFA5, #FF6B6B, #00D4FF);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cyber-card:hover::before {
+            opacity: 1;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #8B5CF6, #06FFA5, #FF6B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        .cyber-button {
+            background: linear-gradient(45deg, #8B5CF6, #06FFA5);
+            background-size: 200% 200%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-button:hover {
+            background-position: 100% 0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: #8B5CF6;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            background: #06FFA5;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            background: #FF6B6B;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .floating-shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            background: #00D4FF;
+            top: 40%;
+            left: 50%;
+            animation-delay: 1s;
+        }
+        
+        .service-tile {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .service-tile:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+        
+        .term-tile {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .term-tile:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(6, 255, 165, 0.3);
+        }
+        
+        .bill-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .bill-card:hover {
+            transform: translateY(-12px) rotateX(2deg);
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.4);
+        }
+        
+        .cyber-input {
+            background: rgba(26, 26, 46, 0.5);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-input:focus {
+            border-color: #8B5CF6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            background: rgba(26, 26, 46, 0.8);
+        }
+        
+        .status-processing {
+            background: linear-gradient(45deg, #FFD93D, #FFA500);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        .status-paid {
+            background: linear-gradient(45deg, #06FFA5, #00D4AA);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        .status-pending {
+            background: linear-gradient(45deg, #6B7280, #9CA3AF);
+        }
+        
+        .status-overdue {
+            background: linear-gradient(45deg, #FF6B6B, #EF4444);
+            animation: glow-pulse 1s ease-in-out infinite;
+        }
+        
+        .status-rejected {
+            background: linear-gradient(45deg, #FF6B6B, #DC2626);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-shapes {
+                display: none;
+            }
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #8B5CF6, #06FFA5, #FF6B6B, #00D4FF);
             background-size: 200% 100%;
-        }
-        
-        .hover-shimmer:hover {
-            background: linear-gradient(90deg, #6A00F4, #8B5CF6, #6A00F4);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s ease-in-out infinite;
-        }
-        
-        @media print {
-            .no-print { display: none !important; }
-            .print-only { display: block !important; }
-        }
-        
-        .offline-bar {
-            background: linear-gradient(90deg, #EF4444, #F87171);
+            animation: gradientShift 3s ease-in-out infinite;
+            z-index: 1000;
         }
     </style>
 </head>
-<body class="font-poppins bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-bg dark:to-gray-900 min-h-screen transition-all duration-300">
-    <!-- Offline Indicator -->
-    <div id="offlineBar" class="hidden offline-bar text-white text-center py-2 px-4 text-sm font-medium">
-        <span>🔌 Anda sedang offline</span>
-        <button id="retryBtn" class="ml-4 bg-white text-red-500 px-3 py-1 rounded-full text-xs hover:bg-gray-100 transition-colors">
-            Coba Lagi
-        </button>
+<body class="font-space bg-gradient-to-br from-dark-bg via-gray-900 to-dark-bg min-h-screen text-white overflow-x-hidden">
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+    
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
     </div>
 
+    <!-- Cyber Grid Background -->
+    <div class="fixed inset-0 bg-cyber-grid opacity-20 pointer-events-none"></div>
+
     <!-- Navigation -->
-    <nav class="glassmorphism sticky top-0 z-50 px-4 py-3">
+    <nav class="glassmorphism sticky top-0 z-50 px-4 py-4 border-b border-neon-purple/20">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center">
-                    <span class="text-white font-bold text-lg">💎</span>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-gradient-to-r from-neon-purple to-neon-green rounded-2xl flex items-center justify-center animate-glow-pulse">
+                        <span class="text-2xl">💎</span>
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-neon-green rounded-full animate-bounce-soft"></div>
                 </div>
                 <div>
-                    <h1 class="font-inter font-bold text-xl text-gray-800 dark:text-white">Digital Fund VIP</h1>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">Enterprise Fund Management</p>
+                    <h1 class="font-space font-bold text-2xl gradient-text">Digital Fund VIP</h1>
+                    <p class="text-xs text-gray-400 font-inter">Your Money, Your Vibe ✨</p>
                 </div>
             </div>
             
             <div class="flex items-center space-x-4">
                 <!-- Dark Mode Toggle -->
-                <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                    <span class="dark:hidden">🌙</span>
-                    <span class="hidden dark:inline">☀️</span>
+                <button id="darkModeToggle" class="p-3 rounded-xl glassmorphism hover:bg-neon-purple/20 transition-all duration-300 group">
+                    <span class="text-xl group-hover:scale-110 transition-transform">🌙</span>
                 </button>
                 
                 <!-- Admin Login -->
-                <button id="adminLoginBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
-                    Admin Login
+                <button id="adminLoginBtn" class="cyber-button px-6 py-3 rounded-xl font-semibold text-white relative overflow-hidden">
+                    <span class="relative z-10">Admin Zone 🚀</span>
                 </button>
             </div>
         </div>
@@ -140,74 +372,116 @@
     <main class="max-w-7xl mx-auto px-4 py-8">
         <!-- Home Section -->
         <section id="homeSection" class="animate-fade-in">
-            <div class="text-center mb-12">
-                <h2 class="font-inter font-bold text-4xl md:text-5xl text-gray-800 dark:text-white mb-4">
-                    Kelola Dana Digital Anda
+            <!-- Hero Section -->
+            <div class="text-center mb-16 relative">
+                <div class="absolute inset-0 bg-gradient-radial from-neon-purple/20 via-transparent to-transparent"></div>
+                <h2 class="font-space font-bold text-5xl md:text-7xl mb-6 relative">
+                    <span class="gradient-text animate-text-glow">Level Up</span><br>
+                    <span class="text-white">Your Money Game</span>
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    Platform enterprise untuk permintaan dana dan pelacakan pembayaran dengan teknologi terdepan
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8 font-inter">
+                    Dapatkan dana instan dengan vibe yang berbeda. Fast, secure, dan tentunya aesthetic AF! 💫
                 </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <span class="px-4 py-2 glassmorphism rounded-full border border-neon-green/30 text-neon-green">⚡ Instant Process</span>
+                    <span class="px-4 py-2 glassmorphism rounded-full border border-neon-purple/30 text-neon-purple">🔒 Super Secure</span>
+                    <span class="px-4 py-2 glassmorphism rounded-full border border-neon-pink/30 text-neon-pink">💎 Premium Vibes</span>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Main Action Cards -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- Fund Request Card -->
-                <div class="glassmorphism neumorphic rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showFundRequest()">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
-                            <span class="text-2xl">💰</span>
-                        </div>
-                        <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-2">Ajukan Dana</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">Buat permintaan dana baru dengan proses yang mudah dan cepat</p>
-                        <div class="bg-primary text-white px-6 py-3 rounded-lg hover-shimmer font-medium">
-                            Mulai Sekarang →
+                <div class="cyber-card glassmorphism rounded-3xl p-8 cursor-pointer group animate-scale-in" onclick="showFundRequest()">
+                    <div class="text-center relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-neon-purple/20 to-neon-green/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-gradient-to-r from-neon-purple to-neon-green rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:animate-bounce-soft">
+                                <span class="text-4xl">💰</span>
+                            </div>
+                            <h3 class="font-space font-bold text-2xl text-white mb-3">Request Dana</h3>
+                            <p class="text-gray-300 mb-8 font-inter">Ajukan dana dengan proses yang cepat dan mudah. No ribet, full vibes! ✨</p>
+                            <div class="cyber-button px-8 py-4 rounded-2xl font-semibold text-white relative overflow-hidden group-hover:scale-105 transition-transform">
+                                <span class="relative z-10">Let's Go! 🚀</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Bill Check Card -->
-                <div class="glassmorphism neumorphic rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showBillCheck()">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-r from-secondary to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
-                            <span class="text-2xl">📋</span>
-                        </div>
-                        <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-2">Cek Tagihan</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">Periksa status dan detail tagihan Anda secara real-time</p>
-                        <div class="bg-secondary text-white px-6 py-3 rounded-lg hover-shimmer font-medium">
-                            Cek Status →
+                <div class="cyber-card glassmorphism rounded-3xl p-8 cursor-pointer group animate-scale-in" onclick="showBillCheck()" style="animation-delay: 0.2s">
+                    <div class="text-center relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-neon-green/20 to-neon-blue/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-gradient-to-r from-neon-green to-neon-blue rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:animate-bounce-soft">
+                                <span class="text-4xl">📱</span>
+                            </div>
+                            <h3 class="font-space font-bold text-2xl text-white mb-3">Check Status</h3>
+                            <p class="text-gray-300 mb-8 font-inter">Track tagihan kamu real-time. Stay updated, stay cool! 😎</p>
+                            <div class="cyber-button px-8 py-4 rounded-2xl font-semibold text-white relative overflow-hidden group-hover:scale-105 transition-transform">
+                                <span class="relative z-10">Check Now! 📊</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-6xl mx-auto">
+                <div class="text-center p-6 glassmorphism rounded-2xl hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h4 class="font-semibold text-white mb-2">Lightning Fast</h4>
+                    <p class="text-sm text-gray-400">Proses dalam hitungan detik</p>
+                </div>
+                <div class="text-center p-6 glassmorphism rounded-2xl hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl mb-3">🔐</div>
+                    <h4 class="font-semibold text-white mb-2">Bank Level Security</h4>
+                    <p class="text-sm text-gray-400">Keamanan tingkat perbankan</p>
+                </div>
+                <div class="text-center p-6 glassmorphism rounded-2xl hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl mb-3">💎</div>
+                    <h4 class="font-semibold text-white mb-2">Premium Experience</h4>
+                    <p class="text-sm text-gray-400">UI/UX yang aesthetic</p>
+                </div>
+                <div class="text-center p-6 glassmorphism rounded-2xl hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl mb-3">🌟</div>
+                    <h4 class="font-semibold text-white mb-2">24/7 Support</h4>
+                    <p class="text-sm text-gray-400">Always here for you</p>
                 </div>
             </div>
         </section>
 
         <!-- Fund Request Section -->
         <section id="fundRequestSection" class="hidden animate-slide-up">
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-5xl mx-auto">
                 <div class="flex items-center mb-8">
-                    <button onclick="showHome()" class="mr-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                        ← Kembali
+                    <button onclick="showHome()" class="mr-6 p-3 glassmorphism rounded-xl hover:bg-neon-purple/20 transition-all duration-300 group">
+                        <span class="text-xl group-hover:scale-110 transition-transform">← Back</span>
                     </button>
-                    <h2 class="font-inter font-bold text-3xl text-gray-800 dark:text-white">Ajukan Dana</h2>
+                    <div>
+                        <h2 class="font-space font-bold text-4xl gradient-text">Request Dana</h2>
+                        <p class="text-gray-400 mt-2">Fill the vibe, get the money! 💸</p>
+                    </div>
                 </div>
 
-                <div class="glassmorphism neumorphic rounded-2xl p-8">
-                    <form id="fundRequestForm" class="space-y-8">
+                <div class="cyber-card glassmorphism rounded-3xl p-8 md:p-12">
+                    <form id="fundRequestForm" class="space-y-10">
                         <!-- Phone Input -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Nomor Telepon
+                        <div class="space-y-4">
+                            <label class="block text-lg font-semibold text-white mb-3">
+                                📱 Nomor WhatsApp
                             </label>
                             <div class="relative">
-                                <input type="tel" id="phoneInput" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all" placeholder="08xxxxxxxxxx">
-                                <div id="phoneStatus" class="absolute right-3 top-3 text-xl"></div>
+                                <input type="tel" id="phoneInput" class="cyber-input w-full px-6 py-4 rounded-2xl text-white placeholder-gray-400 text-lg" placeholder="08xxxxxxxxxx">
+                                <div id="phoneStatus" class="absolute right-4 top-4 text-2xl"></div>
                             </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Format: 08xxxxxxxxxx (tanpa +62)</p>
+                            <p class="text-sm text-gray-400">Format: 08xxxxxxxxxx (tanpa +62)</p>
                         </div>
 
                         <!-- Service Selection -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-                                Pilih Layanan
+                        <div class="space-y-6">
+                            <label class="block text-lg font-semibold text-white">
+                                💳 Pilih E-Wallet Favorit
                             </label>
                             <div id="serviceGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 <!-- Services will be populated by JavaScript -->
@@ -215,65 +489,66 @@
                         </div>
 
                         <!-- Amount Input -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Jumlah Dana
+                        <div class="space-y-4">
+                            <label class="block text-lg font-semibold text-white">
+                                💰 Berapa yang Kamu Butuh?
                             </label>
                             <div class="relative">
-                                <span class="absolute left-3 top-3 text-gray-500">Rp</span>
-                                <input type="text" id="amountInput" class="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all" placeholder="0">
+                                <span class="absolute left-6 top-4 text-gray-400 text-lg">Rp</span>
+                                <input type="text" id="amountInput" class="cyber-input w-full pl-16 pr-6 py-4 rounded-2xl text-white placeholder-gray-400 text-lg" placeholder="0">
                             </div>
-                            <div class="flex flex-wrap gap-2 mt-3">
-                                <button type="button" onclick="addAmount(25000)" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-primary hover:text-white transition-colors">+25K</button>
-                                <button type="button" onclick="addAmount(50000)" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-primary hover:text-white transition-colors">+50K</button>
-                                <button type="button" onclick="addAmount(100000)" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-primary hover:text-white transition-colors">+100K</button>
+                            <div class="flex flex-wrap gap-3 mt-4">
+                                <button type="button" onclick="addAmount(25000)" class="cyber-button px-4 py-2 rounded-xl text-white font-medium hover:scale-105 transition-transform">+25K</button>
+                                <button type="button" onclick="addAmount(50000)" class="cyber-button px-4 py-2 rounded-xl text-white font-medium hover:scale-105 transition-transform">+50K</button>
+                                <button type="button" onclick="addAmount(100000)" class="cyber-button px-4 py-2 rounded-xl text-white font-medium hover:scale-105 transition-transform">+100K</button>
+                                <button type="button" onclick="addAmount(500000)" class="cyber-button px-4 py-2 rounded-xl text-white font-medium hover:scale-105 transition-transform">+500K</button>
                             </div>
                         </div>
 
                         <!-- Term Selection -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-                                Jangka Waktu
+                        <div class="space-y-6">
+                            <label class="block text-lg font-semibold text-white">
+                                ⏰ Pilih Jangka Waktu
                             </label>
-                            <div id="termGrid" class="grid grid-cols-3 md:grid-cols-5 gap-3">
+                            <div id="termGrid" class="grid grid-cols-3 md:grid-cols-5 gap-4">
                                 <!-- Terms will be populated by JavaScript -->
                             </div>
                         </div>
 
                         <!-- Summary -->
-                        <div id="summaryBox" class="glassmorphism rounded-xl p-6 border-2 border-primary/20">
-                            <h3 class="font-inter font-bold text-lg text-gray-800 dark:text-white mb-4">Ringkasan Permintaan</h3>
-                            <div class="space-y-2 text-sm">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Jumlah Permintaan:</span>
-                                    <span id="summaryAmount" class="font-medium text-gray-800 dark:text-white">Rp 0</span>
+                        <div id="summaryBox" class="cyber-card glassmorphism rounded-2xl p-8 border-2 border-neon-purple/30">
+                            <h3 class="font-space font-bold text-2xl gradient-text mb-6">💎 Summary Vibes</h3>
+                            <div class="space-y-4 text-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Jumlah Request:</span>
+                                    <span id="summaryAmount" class="font-bold text-white">Rp 0</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Biaya Admin:</span>
-                                    <span id="summaryAdminFee" class="font-medium text-gray-800 dark:text-white">Rp 0</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Admin Fee:</span>
+                                    <span id="summaryAdminFee" class="font-bold text-white">Rp 0</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Biaya Jangka Waktu:</span>
-                                    <span id="summaryTermFee" class="font-medium text-gray-800 dark:text-white">Rp 0</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Term Fee:</span>
+                                    <span id="summaryTermFee" class="font-bold text-white">Rp 0</span>
                                 </div>
-                                <hr class="border-gray-300 dark:border-gray-600">
-                                <div class="flex justify-between text-lg font-bold">
-                                    <span class="text-gray-800 dark:text-white">Total:</span>
-                                    <span id="summaryTotal" class="text-primary animate-count-up">Rp 0</span>
+                                <hr class="border-gray-600">
+                                <div class="flex justify-between items-center text-2xl font-bold">
+                                    <span class="gradient-text">Total:</span>
+                                    <span id="summaryTotal" class="gradient-text animate-text-glow">Rp 0</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Jatuh Tempo:</span>
-                                    <span id="summaryDueDate" class="font-medium text-gray-800 dark:text-white">-</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Due Date:</span>
+                                    <span id="summaryDueDate" class="font-bold text-neon-green">-</span>
                                 </div>
                             </div>
                             
                             <!-- Token Display -->
-                            <div id="tokenDisplay" class="mt-4 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                            <div id="tokenDisplay" class="mt-6 p-4 glassmorphism rounded-xl border border-neon-purple/30">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-sm text-gray-600 dark:text-gray-400">Token Transaksi:</span>
-                                    <div class="flex items-center space-x-2">
-                                        <span id="transactionToken" class="font-mono font-bold text-primary">-</span>
-                                        <button type="button" id="copyTokenBtn" class="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition-colors" title="Salin Token">
+                                    <span class="text-gray-300">🎫 Token ID:</span>
+                                    <div class="flex items-center space-x-3">
+                                        <span id="transactionToken" class="font-mono font-bold text-neon-purple text-lg">-</span>
+                                        <button type="button" id="copyTokenBtn" class="p-2 glassmorphism rounded-lg hover:bg-neon-purple/20 transition-colors" title="Copy Token">
                                             📋
                                         </button>
                                     </div>
@@ -282,8 +557,8 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" id="submitBtn" class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover-shimmer disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
-                            Ajukan Permintaan
+                        <button type="submit" id="submitBtn" class="w-full cyber-button py-6 rounded-2xl font-bold text-xl text-white relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
+                            <span class="relative z-10">🚀 Submit Request!</span>
                         </button>
                     </form>
                 </div>
@@ -294,61 +569,61 @@
         <section id="billCheckSection" class="hidden animate-slide-up">
             <div class="max-w-6xl mx-auto">
                 <div class="flex items-center mb-8">
-                    <button onclick="showHome()" class="mr-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                        ← Kembali
+                    <button onclick="showHome()" class="mr-6 p-3 glassmorphism rounded-xl hover:bg-neon-purple/20 transition-all duration-300 group">
+                        <span class="text-xl group-hover:scale-110 transition-transform">← Back</span>
                     </button>
-                    <h2 class="font-inter font-bold text-3xl text-gray-800 dark:text-white">Cek Tagihan</h2>
+                    <div>
+                        <h2 class="font-space font-bold text-4xl gradient-text">Check Status</h2>
+                        <p class="text-gray-400 mt-2">Track your money vibes! 📊</p>
+                    </div>
                 </div>
 
                 <!-- Phone Lookup -->
-                <div class="glassmorphism neumorphic rounded-2xl p-8 mb-8">
-                    <div class="max-w-md mx-auto">
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Masukkan Nomor Telepon
-                        </label>
-                        <div class="flex space-x-3">
-                            <input type="tel" id="billCheckPhone" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all" placeholder="08xxxxxxxxxx">
-                            <button id="checkBillsBtn" class="px-6 py-3 bg-secondary text-white rounded-lg hover-shimmer font-medium">
-                                Cek Tagihan
+                <div class="cyber-card glassmorphism rounded-3xl p-8 mb-8">
+                    <div class="max-w-md mx-auto text-center">
+                        <h3 class="text-2xl font-bold text-white mb-6">🔍 Find Your Bills</h3>
+                        <div class="space-y-4">
+                            <input type="tel" id="billCheckPhone" class="cyber-input w-full px-6 py-4 rounded-2xl text-white placeholder-gray-400 text-lg text-center" placeholder="08xxxxxxxxxx">
+                            <button id="checkBillsBtn" class="cyber-button w-full py-4 rounded-2xl font-bold text-lg text-white relative overflow-hidden">
+                                <span class="relative z-10">🔍 Check Bills</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Loading -->
-                <div id="billsLoading" class="hidden text-center py-12">
-                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-                    <p class="mt-4 text-gray-600 dark:text-gray-400">Mencari tagihan Anda...</p>
+                <div id="billsLoading" class="hidden text-center py-16">
+                    <div class="inline-block animate-spin rounded-full h-16 w-16 border-4 border-neon-purple border-t-transparent"></div>
+                    <p class="mt-6 text-xl text-gray-300">Searching your vibes... ✨</p>
                 </div>
 
                 <!-- Bills Results -->
                 <div id="billsResults" class="hidden">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white">Tagihan Anda</h3>
-                        <div class="flex items-center space-x-3">
-                            <!-- Filter Dropdown -->
-                            <select id="billsFilter" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white">
-                                <option value="all">Semua Status</option>
-                                <option value="processing">Diproses</option>
-                                <option value="paid">Lunas</option>
-                                <option value="overdue">Terlambat</option>
-                                <option value="rejected">Ditolak</option>
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-space font-bold text-2xl text-white">💎 Your Bills</h3>
+                        <div class="flex items-center space-x-4">
+                            <select id="billsFilter" class="cyber-input px-4 py-2 rounded-xl text-white">
+                                <option value="all">All Status</option>
+                                <option value="processing">Processing</option>
+                                <option value="paid">Paid</option>
+                                <option value="overdue">Overdue</option>
+                                <option value="rejected">Rejected</option>
                             </select>
-                            <button id="exportAllBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
-                                Export PDF
+                            <button id="exportAllBtn" class="cyber-button px-6 py-2 rounded-xl font-semibold text-white">
+                                📄 Export PDF
                             </button>
                         </div>
                     </div>
-                    <div id="billsList" class="space-y-4">
+                    <div id="billsList" class="space-y-6">
                         <!-- Bills will be populated by JavaScript -->
                     </div>
                 </div>
 
                 <!-- No Bills Found -->
-                <div id="noBillsFound" class="hidden text-center py-12">
-                    <div class="text-6xl mb-4">📭</div>
-                    <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-2">Tidak Ada Tagihan</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Belum ada tagihan untuk nomor telepon ini</p>
+                <div id="noBillsFound" class="hidden text-center py-16">
+                    <div class="text-8xl mb-6">😴</div>
+                    <h3 class="font-space font-bold text-2xl text-white mb-4">No Bills Found</h3>
+                    <p class="text-gray-400 text-lg">Belum ada tagihan untuk nomor ini. Time to make some! 💸</p>
                 </div>
             </div>
         </section>
@@ -358,65 +633,68 @@
             <div class="max-w-7xl mx-auto">
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-center">
-                        <button onclick="showHome()" class="mr-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                            ← Kembali
+                        <button onclick="showHome()" class="mr-6 p-3 glassmorphism rounded-xl hover:bg-neon-purple/20 transition-all duration-300 group">
+                            <span class="text-xl group-hover:scale-110 transition-transform">← Back</span>
                         </button>
-                        <h2 class="font-inter font-bold text-3xl text-gray-800 dark:text-white">Admin Dashboard</h2>
+                        <div>
+                            <h2 class="font-space font-bold text-4xl gradient-text">Admin Zone</h2>
+                            <p class="text-gray-400 mt-2">Control the money flow! 🎮</p>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <button id="refreshDataBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
+                    <div class="flex items-center space-x-4">
+                        <button id="refreshDataBtn" class="cyber-button px-6 py-3 rounded-xl font-semibold text-white">
                             🔄 Refresh
                         </button>
-                        <button id="logoutBtn" class="px-4 py-2 bg-error text-white rounded-lg hover:bg-red-600 transition-colors">
-                            Logout
+                        <button id="logoutBtn" class="px-6 py-3 bg-gradient-to-r from-neon-pink to-red-500 rounded-xl font-semibold text-white hover:scale-105 transition-transform">
+                            👋 Logout
                         </button>
                     </div>
                 </div>
 
                 <!-- Metrics Cards -->
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
-                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-primary" id="totalRequests">0</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Total</div>
+                    <div class="cyber-card glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                        <div class="text-3xl font-bold gradient-text" id="totalRequests">0</div>
+                        <div class="text-sm text-gray-400 mt-2">Total</div>
                     </div>
-                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-warning" id="processingCount">0</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Diproses</div>
+                    <div class="cyber-card glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                        <div class="text-3xl font-bold text-warning" id="processingCount">0</div>
+                        <div class="text-sm text-gray-400 mt-2">Processing</div>
                     </div>
-                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-success" id="paidCount">0</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Lunas</div>
+                    <div class="cyber-card glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                        <div class="text-3xl font-bold text-success" id="paidCount">0</div>
+                        <div class="text-sm text-gray-400 mt-2">Paid</div>
                     </div>
-                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-secondary" id="pendingCount">0</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Pending</div>
+                    <div class="cyber-card glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                        <div class="text-3xl font-bold text-secondary" id="pendingCount">0</div>
+                        <div class="text-sm text-gray-400 mt-2">Pending</div>
                     </div>
-                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-error" id="overdueCount">0</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Terlambat</div>
+                    <div class="cyber-card glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                        <div class="text-3xl font-bold text-error" id="overdueCount">0</div>
+                        <div class="text-sm text-gray-400 mt-2">Overdue</div>
                     </div>
-                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
-                        <div class="text-2xl font-bold text-gray-500" id="rejectedCount">0</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Ditolak</div>
+                    <div class="cyber-card glassmorphism rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                        <div class="text-3xl font-bold text-gray-500" id="rejectedCount">0</div>
+                        <div class="text-sm text-gray-400 mt-2">Rejected</div>
                     </div>
                 </div>
 
                 <!-- Admin Controls -->
-                <div class="glassmorphism neumorphic rounded-2xl p-6 mb-8">
+                <div class="cyber-card glassmorphism rounded-2xl p-6 mb-8">
                     <div class="flex flex-wrap items-center justify-between gap-4">
-                        <div class="flex flex-wrap gap-2">
-                            <button class="filter-chip active" data-status="all">Semua</button>
-                            <button class="filter-chip" data-status="processing">Diproses</button>
-                            <button class="filter-chip" data-status="paid">Lunas</button>
+                        <div class="flex flex-wrap gap-3">
+                            <button class="filter-chip active" data-status="all">All</button>
+                            <button class="filter-chip" data-status="processing">Processing</button>
+                            <button class="filter-chip" data-status="paid">Paid</button>
                             <button class="filter-chip" data-status="pending">Pending</button>
-                            <button class="filter-chip" data-status="overdue">Terlambat</button>
-                            <button class="filter-chip" data-status="rejected">Ditolak</button>
+                            <button class="filter-chip" data-status="overdue">Overdue</button>
+                            <button class="filter-chip" data-status="rejected">Rejected</button>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <input type="date" id="dateFrom" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white">
+                        <div class="flex items-center space-x-4">
+                            <input type="date" id="dateFrom" class="cyber-input px-4 py-2 rounded-xl text-white">
                             <span class="text-gray-500">-</span>
-                            <input type="date" id="dateTo" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white">
-                            <button id="exportReportBtn" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-yellow-600 transition-colors">
+                            <input type="date" id="dateTo" class="cyber-input px-4 py-2 rounded-xl text-white">
+                            <button id="exportReportBtn" class="cyber-button px-6 py-2 rounded-xl font-semibold text-white">
                                 📊 Export Report
                             </button>
                         </div>
@@ -424,39 +702,39 @@
                 </div>
 
                 <!-- Data Table -->
-                <div class="glassmorphism neumorphic rounded-2xl overflow-hidden">
+                <div class="cyber-card glassmorphism rounded-2xl overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full">
-                            <thead class="bg-gray-50 dark:bg-gray-800">
+                            <thead class="bg-gradient-to-r from-neon-purple/20 to-neon-green/20">
                                 <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Token</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Telepon</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Layanan</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jumlah</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jatuh Tempo</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Token</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Phone</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Service</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Amount</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Total</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Due Date</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="adminTableBody" class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                            <tbody id="adminTableBody" class="divide-y divide-gray-700">
                                 <!-- Table rows will be populated by JavaScript -->
                             </tbody>
                         </table>
                     </div>
                     
                     <!-- Pagination -->
-                    <div class="bg-gray-50 dark:bg-gray-800 px-4 py-3 flex items-center justify-between">
-                        <div class="text-sm text-gray-700 dark:text-gray-300">
-                            Menampilkan <span id="showingFrom">1</span> - <span id="showingTo">10</span> dari <span id="totalRecords">0</span> data
+                    <div class="bg-gradient-to-r from-dark-card/50 to-dark-card/30 px-6 py-4 flex items-center justify-between">
+                        <div class="text-sm text-gray-300">
+                            Showing <span id="showingFrom">1</span> - <span id="showingTo">10</span> of <span id="totalRecords">0</span> records
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <button id="prevPageBtn" class="px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
-                                Sebelumnya
+                        <div class="flex items-center space-x-3">
+                            <button id="prevPageBtn" class="cyber-button px-4 py-2 rounded-xl text-white font-medium">
+                                Previous
                             </button>
-                            <span id="currentPage" class="px-3 py-1 bg-primary text-white rounded text-sm">1</span>
-                            <button id="nextPageBtn" class="px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
-                                Selanjutnya
+                            <span id="currentPage" class="px-4 py-2 bg-neon-purple text-white rounded-xl font-bold">1</span>
+                            <button id="nextPageBtn" class="cyber-button px-4 py-2 rounded-xl text-white font-medium">
+                                Next
                             </button>
                         </div>
                     </div>
@@ -467,20 +745,20 @@
 
     <!-- Modals -->
     <!-- Admin Login Modal -->
-    <div id="adminLoginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="glassmorphism neumorphic rounded-2xl p-8 w-full max-w-md animate-slide-up">
-            <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-6 text-center">Admin Login</h3>
+    <div id="adminLoginModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="cyber-card glassmorphism rounded-3xl p-8 w-full max-w-md animate-scale-in">
+            <h3 class="font-space font-bold text-2xl gradient-text mb-8 text-center">🔐 Admin Zone</h3>
             <form id="adminLoginForm">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
-                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white" placeholder="Masukkan password admin">
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold text-white mb-3">Password</label>
+                    <input type="password" id="adminPassword" class="cyber-input w-full px-6 py-4 rounded-2xl text-white placeholder-gray-400" placeholder="Enter admin password">
                 </div>
-                <div class="flex space-x-3">
-                    <button type="button" onclick="closeAdminLogin()" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                        Batal
+                <div class="flex space-x-4">
+                    <button type="button" onclick="closeAdminLogin()" class="flex-1 px-6 py-4 glassmorphism border border-gray-600 text-gray-300 rounded-2xl hover:bg-gray-700/50 transition-colors font-semibold">
+                        Cancel
                     </button>
-                    <button type="submit" class="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
-                        Login
+                    <button type="submit" class="flex-1 cyber-button px-6 py-4 rounded-2xl text-white font-semibold">
+                        Login 🚀
                     </button>
                 </div>
             </form>
@@ -488,49 +766,49 @@
     </div>
 
     <!-- Confirmation Modal -->
-    <div id="confirmationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="glassmorphism neumorphic rounded-2xl p-8 w-full max-w-lg animate-slide-up">
-            <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-4">Konfirmasi Permintaan</h3>
-            <div id="confirmationDetails" class="mb-6">
+    <div id="confirmationModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="cyber-card glassmorphism rounded-3xl p-8 w-full max-w-lg animate-scale-in">
+            <h3 class="font-space font-bold text-2xl gradient-text mb-6">✨ Confirm Request</h3>
+            <div id="confirmationDetails" class="mb-8">
                 <!-- Details will be populated by JavaScript -->
             </div>
-            <div class="flex space-x-3">
-                <button type="button" onclick="closeConfirmation()" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    Batal
+            <div class="flex space-x-4">
+                <button type="button" onclick="closeConfirmation()" class="flex-1 px-6 py-4 glassmorphism border border-gray-600 text-gray-300 rounded-2xl hover:bg-gray-700/50 transition-colors font-semibold">
+                    Cancel
                 </button>
-                <button type="button" id="confirmSubmitBtn" class="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
-                    Konfirmasi
+                <button type="button" id="confirmSubmitBtn" class="flex-1 cyber-button px-6 py-4 rounded-2xl text-white font-semibold">
+                    Confirm 🎯
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Status Update Modal -->
-    <div id="statusUpdateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="glassmorphism neumorphic rounded-2xl p-8 w-full max-w-md animate-slide-up">
-            <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-6">Update Status</h3>
+    <div id="statusUpdateModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="cyber-card glassmorphism rounded-3xl p-8 w-full max-w-md animate-scale-in">
+            <h3 class="font-space font-bold text-2xl gradient-text mb-6">🎮 Update Status</h3>
             <form id="statusUpdateForm">
                 <input type="hidden" id="updateTokenId">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status</label>
-                    <select id="newStatus" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white">
-                        <option value="processing">Diproses</option>
-                        <option value="paid">Lunas</option>
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold text-white mb-3">Status</label>
+                    <select id="newStatus" class="cyber-input w-full px-6 py-4 rounded-2xl text-white">
+                        <option value="processing">Processing</option>
+                        <option value="paid">Paid</option>
                         <option value="pending">Pending</option>
-                        <option value="overdue">Terlambat</option>
-                        <option value="rejected">Ditolak</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="rejected">Rejected</option>
                     </select>
                 </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Catatan Admin</label>
-                    <textarea id="adminNotes" rows="3" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white" placeholder="Tambahkan catatan (opsional)"></textarea>
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-white mb-3">Admin Notes</label>
+                    <textarea id="adminNotes" rows="3" class="cyber-input w-full px-6 py-4 rounded-2xl text-white placeholder-gray-400" placeholder="Add notes (optional)"></textarea>
                 </div>
-                <div class="flex space-x-3">
-                    <button type="button" onclick="closeStatusUpdate()" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                        Batal
+                <div class="flex space-x-4">
+                    <button type="button" onclick="closeStatusUpdate()" class="flex-1 px-6 py-4 glassmorphism border border-gray-600 text-gray-300 rounded-2xl hover:bg-gray-700/50 transition-colors font-semibold">
+                        Cancel
                     </button>
-                    <button type="submit" class="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
-                        Update
+                    <button type="submit" class="flex-1 cyber-button px-6 py-4 rounded-2xl text-white font-semibold">
+                        Update 🎯
                     </button>
                 </div>
             </form>
@@ -538,15 +816,15 @@
     </div>
 
     <!-- Toast Container -->
-    <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2">
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 space-y-3">
         <!-- Toasts will be added here dynamically -->
     </div>
 
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-        <div class="glassmorphism rounded-2xl p-8 text-center">
-            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
-            <p class="text-gray-800 dark:text-white font-medium">Memproses permintaan...</p>
+    <div id="loadingOverlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center">
+        <div class="cyber-card glassmorphism rounded-3xl p-12 text-center">
+            <div class="inline-block animate-spin rounded-full h-16 w-16 border-4 border-neon-purple border-t-transparent mb-6"></div>
+            <p class="text-white font-semibold text-xl">Processing your vibe... ✨</p>
         </div>
     </div>
 
