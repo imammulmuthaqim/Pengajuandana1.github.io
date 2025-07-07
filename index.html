@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Fund VIP - Enterprise Fund Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6A00F4',
+                        secondary: '#FFB800',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        error: '#EF4444',
+                        'dark-bg': '#121212',
+                        'neon-blue': '#0EA5E9'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'count-up': 'countUp 0.8s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(106, 0, 244, 0.5)' },
+                            '50%': { boxShadow: '0 0 20px rgba(106, 0, 244, 0.8)' }
+                        },
+                        countUp: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glassmorphism {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .neumorphic {
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.8);
+        }
+        
+        .dark .neumorphic {
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.05);
+        }
+        
+        .shimmer-bg {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200% 100%;
+        }
+        
+        .hover-shimmer:hover {
+            background: linear-gradient(90deg, #6A00F4, #8B5CF6, #6A00F4);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+        
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+        }
+        
+        .offline-bar {
+            background: linear-gradient(90deg, #EF4444, #F87171);
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gradient-to-br from-gray-50 to-gray-100 dark:from-dark-bg dark:to-gray-900 min-h-screen transition-all duration-300">
+    <!-- Offline Indicator -->
+    <div id="offlineBar" class="hidden offline-bar text-white text-center py-2 px-4 text-sm font-medium">
+        <span>🔌 Anda sedang offline</span>
+        <button id="retryBtn" class="ml-4 bg-white text-red-500 px-3 py-1 rounded-full text-xs hover:bg-gray-100 transition-colors">
+            Coba Lagi
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glassmorphism sticky top-0 z-50 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">💎</span>
+                </div>
+                <div>
+                    <h1 class="font-inter font-bold text-xl text-gray-800 dark:text-white">Digital Fund VIP</h1>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Enterprise Fund Management</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle -->
+                <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                    <span class="dark:hidden">🌙</span>
+                    <span class="hidden dark:inline">☀️</span>
+                </button>
+                
+                <!-- Admin Login -->
+                <button id="adminLoginBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                    Admin Login
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Home Section -->
+        <section id="homeSection" class="animate-fade-in">
+            <div class="text-center mb-12">
+                <h2 class="font-inter font-bold text-4xl md:text-5xl text-gray-800 dark:text-white mb-4">
+                    Kelola Dana Digital Anda
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Platform enterprise untuk permintaan dana dan pelacakan pembayaran dengan teknologi terdepan
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Fund Request Card -->
+                <div class="glassmorphism neumorphic rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showFundRequest()">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-2">Ajukan Dana</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">Buat permintaan dana baru dengan proses yang mudah dan cepat</p>
+                        <div class="bg-primary text-white px-6 py-3 rounded-lg hover-shimmer font-medium">
+                            Mulai Sekarang →
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bill Check Card -->
+                <div class="glassmorphism neumorphic rounded-2xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer group" onclick="showBillCheck()">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-secondary to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
+                            <span class="text-2xl">📋</span>
+                        </div>
+                        <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-2">Cek Tagihan</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">Periksa status dan detail tagihan Anda secara real-time</p>
+                        <div class="bg-secondary text-white px-6 py-3 rounded-lg hover-shimmer font-medium">
+                            Cek Status →
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fund Request Section -->
+        <section id="fundRequestSection" class="hidden animate-slide-up">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-8">
+                    <button onclick="showHome()" class="mr-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        ← Kembali
+                    </button>
+                    <h2 class="font-inter font-bold text-3xl text-gray-800 dark:text-white">Ajukan Dana</h2>
+                </div>
+
+                <div class="glassmorphism neumorphic rounded-2xl p-8">
+                    <form id="fundRequestForm" class="space-y-8">
+                        <!-- Phone Input -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Nomor Telepon
+                            </label>
+                            <div class="relative">
+                                <input type="tel" id="phoneInput" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all" placeholder="08xxxxxxxxxx">
+                                <div id="phoneStatus" class="absolute right-3 top-3 text-xl"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Format: 08xxxxxxxxxx (tanpa +62)</p>
+                        </div>
+
+                        <!-- Service Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+                                Pilih Layanan
+                            </label>
+                            <div id="serviceGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <!-- Services will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Amount Input -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Jumlah Dana
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-3 text-gray-500">Rp</span>
+                                <input type="text" id="amountInput" class="w-full pl-12 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all" placeholder="0">
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <button type="button" onclick="addAmount(25000)" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-primary hover:text-white transition-colors">+25K</button>
+                                <button type="button" onclick="addAmount(50000)" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-primary hover:text-white transition-colors">+50K</button>
+                                <button type="button" onclick="addAmount(100000)" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-primary hover:text-white transition-colors">+100K</button>
+                            </div>
+                        </div>
+
+                        <!-- Term Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+                                Jangka Waktu
+                            </label>
+                            <div id="termGrid" class="grid grid-cols-3 md:grid-cols-5 gap-3">
+                                <!-- Terms will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Summary -->
+                        <div id="summaryBox" class="glassmorphism rounded-xl p-6 border-2 border-primary/20">
+                            <h3 class="font-inter font-bold text-lg text-gray-800 dark:text-white mb-4">Ringkasan Permintaan</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Jumlah Permintaan:</span>
+                                    <span id="summaryAmount" class="font-medium text-gray-800 dark:text-white">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Biaya Admin:</span>
+                                    <span id="summaryAdminFee" class="font-medium text-gray-800 dark:text-white">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Biaya Jangka Waktu:</span>
+                                    <span id="summaryTermFee" class="font-medium text-gray-800 dark:text-white">Rp 0</span>
+                                </div>
+                                <hr class="border-gray-300 dark:border-gray-600">
+                                <div class="flex justify-between text-lg font-bold">
+                                    <span class="text-gray-800 dark:text-white">Total:</span>
+                                    <span id="summaryTotal" class="text-primary animate-count-up">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 dark:text-gray-400">Jatuh Tempo:</span>
+                                    <span id="summaryDueDate" class="font-medium text-gray-800 dark:text-white">-</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Token Display -->
+                            <div id="tokenDisplay" class="mt-4 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-400">Token Transaksi:</span>
+                                    <div class="flex items-center space-x-2">
+                                        <span id="transactionToken" class="font-mono font-bold text-primary">-</span>
+                                        <button type="button" id="copyTokenBtn" class="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition-colors" title="Salin Token">
+                                            📋
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submitBtn" class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover-shimmer disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
+                            Ajukan Permintaan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bill Check Section -->
+        <section id="billCheckSection" class="hidden animate-slide-up">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center mb-8">
+                    <button onclick="showHome()" class="mr-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        ← Kembali
+                    </button>
+                    <h2 class="font-inter font-bold text-3xl text-gray-800 dark:text-white">Cek Tagihan</h2>
+                </div>
+
+                <!-- Phone Lookup -->
+                <div class="glassmorphism neumorphic rounded-2xl p-8 mb-8">
+                    <div class="max-w-md mx-auto">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Masukkan Nomor Telepon
+                        </label>
+                        <div class="flex space-x-3">
+                            <input type="tel" id="billCheckPhone" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all" placeholder="08xxxxxxxxxx">
+                            <button id="checkBillsBtn" class="px-6 py-3 bg-secondary text-white rounded-lg hover-shimmer font-medium">
+                                Cek Tagihan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading -->
+                <div id="billsLoading" class="hidden text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">Mencari tagihan Anda...</p>
+                </div>
+
+                <!-- Bills Results -->
+                <div id="billsResults" class="hidden">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white">Tagihan Anda</h3>
+                        <div class="flex items-center space-x-3">
+                            <!-- Filter Dropdown -->
+                            <select id="billsFilter" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white">
+                                <option value="all">Semua Status</option>
+                                <option value="processing">Diproses</option>
+                                <option value="paid">Lunas</option>
+                                <option value="overdue">Terlambat</option>
+                                <option value="rejected">Ditolak</option>
+                            </select>
+                            <button id="exportAllBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
+                    <div id="billsList" class="space-y-4">
+                        <!-- Bills will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- No Bills Found -->
+                <div id="noBillsFound" class="hidden text-center py-12">
+                    <div class="text-6xl mb-4">📭</div>
+                    <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-2">Tidak Ada Tagihan</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Belum ada tagihan untuk nomor telepon ini</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="adminSection" class="hidden animate-slide-up">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <button onclick="showHome()" class="mr-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            ← Kembali
+                        </button>
+                        <h2 class="font-inter font-bold text-3xl text-gray-800 dark:text-white">Admin Dashboard</h2>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button id="refreshDataBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
+                            🔄 Refresh
+                        </button>
+                        <button id="logoutBtn" class="px-4 py-2 bg-error text-white rounded-lg hover:bg-red-600 transition-colors">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Metrics Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-primary" id="totalRequests">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Total</div>
+                    </div>
+                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-warning" id="processingCount">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Diproses</div>
+                    </div>
+                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-success" id="paidCount">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Lunas</div>
+                    </div>
+                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-secondary" id="pendingCount">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Pending</div>
+                    </div>
+                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-error" id="overdueCount">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Terlambat</div>
+                    </div>
+                    <div class="glassmorphism neumorphic rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-gray-500" id="rejectedCount">0</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Ditolak</div>
+                    </div>
+                </div>
+
+                <!-- Admin Controls -->
+                <div class="glassmorphism neumorphic rounded-2xl p-6 mb-8">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-wrap gap-2">
+                            <button class="filter-chip active" data-status="all">Semua</button>
+                            <button class="filter-chip" data-status="processing">Diproses</button>
+                            <button class="filter-chip" data-status="paid">Lunas</button>
+                            <button class="filter-chip" data-status="pending">Pending</button>
+                            <button class="filter-chip" data-status="overdue">Terlambat</button>
+                            <button class="filter-chip" data-status="rejected">Ditolak</button>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <input type="date" id="dateFrom" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white">
+                            <span class="text-gray-500">-</span>
+                            <input type="date" id="dateTo" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white">
+                            <button id="exportReportBtn" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-yellow-600 transition-colors">
+                                📊 Export Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="glassmorphism neumorphic rounded-2xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Token</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Telepon</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Layanan</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jumlah</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jatuh Tempo</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody" class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="bg-gray-50 dark:bg-gray-800 px-4 py-3 flex items-center justify-between">
+                        <div class="text-sm text-gray-700 dark:text-gray-300">
+                            Menampilkan <span id="showingFrom">1</span> - <span id="showingTo">10</span> dari <span id="totalRecords">0</span> data
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button id="prevPageBtn" class="px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                                Sebelumnya
+                            </button>
+                            <span id="currentPage" class="px-3 py-1 bg-primary text-white rounded text-sm">1</span>
+                            <button id="nextPageBtn" class="px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                                Selanjutnya
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glassmorphism neumorphic rounded-2xl p-8 w-full max-w-md animate-slide-up">
+            <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-6 text-center">Admin Login</h3>
+            <form id="adminLoginForm">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white" placeholder="Masukkan password admin">
+                </div>
+                <div class="flex space-x-3">
+                    <button type="button" onclick="closeAdminLogin()" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Batal
+                    </button>
+                    <button type="submit" class="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glassmorphism neumorphic rounded-2xl p-8 w-full max-w-lg animate-slide-up">
+            <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-4">Konfirmasi Permintaan</h3>
+            <div id="confirmationDetails" class="mb-6">
+                <!-- Details will be populated by JavaScript -->
+            </div>
+            <div class="flex space-x-3">
+                <button type="button" onclick="closeConfirmation()" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    Batal
+                </button>
+                <button type="button" id="confirmSubmitBtn" class="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
+                    Konfirmasi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Update Modal -->
+    <div id="statusUpdateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glassmorphism neumorphic rounded-2xl p-8 w-full max-w-md animate-slide-up">
+            <h3 class="font-inter font-bold text-xl text-gray-800 dark:text-white mb-6">Update Status</h3>
+            <form id="statusUpdateForm">
+                <input type="hidden" id="updateTokenId">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status</label>
+                    <select id="newStatus" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white">
+                        <option value="processing">Diproses</option>
+                        <option value="paid">Lunas</option>
+                        <option value="pending">Pending</option>
+                        <option value="overdue">Terlambat</option>
+                        <option value="rejected">Ditolak</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Catatan Admin</label>
+                    <textarea id="adminNotes" rows="3" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-800 dark:text-white" placeholder="Tambahkan catatan (opsional)"></textarea>
+                </div>
+                <div class="flex space-x-3">
+                    <button type="button" onclick="closeStatusUpdate()" class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Batal
+                    </button>
+                    <button type="submit" class="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        Update
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2">
+        <!-- Toasts will be added here dynamically -->
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
+        <div class="glassmorphism rounded-2xl p-8 text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
+            <p class="text-gray-800 dark:text-white font-medium">Memproses permintaan...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="app.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="fund-request.js"></script>
+    <script type="module" src="bill-check.js"></script>
+    <script type="module" src="admin.js"></script>
+    <script type="module" src="utils.js"></script>
+</body>
+</html>
